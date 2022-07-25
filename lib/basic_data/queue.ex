@@ -16,10 +16,10 @@ defmodule BasicData.Queue do
 
   @spec enqueue(__MODULE__.t(), any) :: __MODULE__.t()
   def enqueue(%__MODULE__{in_stack: in_stack} = queue, x) do
-    %{queue | in_stack: [x | in_stack]}
+    %__MODULE__{queue | in_stack: [x | in_stack]}
   end
 
-  @spec enqueue(__MODULE__.t(), [any]) :: __MODULE__.t()
+  @spec enqueue_list(__MODULE__.t(), [any]) :: __MODULE__.t()
   def enqueue_list(%__MODULE__{in_stack: in_stack} = queue, list) when is_list(list) do
     %{queue | in_stack: Enum.reverse(list) ++ in_stack}
   end
@@ -34,7 +34,7 @@ defmodule BasicData.Queue do
     {head, %__MODULE__{out_stack: tail}}
   end
 
-  @spec peek(list) :: any
+  @spec peek(__MODULE__.t()) :: any()
   def peek(%__MODULE__{out_stack: [head | _]}), do: head
   def peek(%__MODULE__{in_stack: in_stack}), do: List.last(in_stack)
 

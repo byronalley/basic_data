@@ -1,4 +1,10 @@
 defmodule BasicData.BinaryTree do
+  @moduledoc """
+  This module implements a basic binary tree.
+
+  Use #{__MODULE__}.new() to create a new tree, or pass a list to initialize it.
+  """
+
   defstruct value: nil, left: nil, right: nil
 
   alias BasicData.Queue
